@@ -52,12 +52,12 @@ console.log(song.melancholy); // false - boolean
 console.log(song.copiesSold) // 1922000 - number
 console.log(song.released) // "November 21, 2013" - string
 console.log(song.recordingYear) // 2013 - number
-console.log(song.chartPositions) // Array of objects
 console.log(song.credits); // Object
 console.log(song.credits.writtenBy) // Outputting the value assigned to the "writtenBy" key - 'Pharrell Williams' - string
 console.log(song.credits.producedBy) // Outputting the value assigned to the "producedBy" key - "Pharrell Williams" - string
 console.log(song.formats) // Array
 console.log(song.formats.length) // Number of items in the array - 4 - number
-console.log(song.formats[song.formats.length - 1]) // Accessing the last item in the array - "Digital Download" - string
+console.log(song.formats[song.formats.length - 1]) // Accessing the last item in the array - "Digital Download" - string (Arrays are zero indexed, so need to deduct 1 from the length of the array to get the last item)
+console.log(song.chartPositions) // Array of objects
 console.log(song.chartPositions[0].chart); // Accessing the first object in the array and outputting the value assigned to the "chart" key - "UK Singles" - string
 console.log(song.chartPositions[0].position); // Accessing the first object in the array and outputting the value assigned to the "position" key - 1 - number
