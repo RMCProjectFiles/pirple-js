@@ -7,7 +7,7 @@
 
 
 /*
-    All men are mortal
+    All men are mortal.
     Socrates is a man.
     Therefore, socrates is mortal.
 */
