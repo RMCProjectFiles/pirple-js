@@ -28,7 +28,6 @@ console.log (checkMortality() ); // Returns false (required parameters not passe
 console.log( checkMortality( {name: "Mary-Jane"}, 10 ) ); // Returns false (Incorrect parameters types passed, so default values are used in the function)
 
 
-
 /*
     This cake is either vanilla or chocolate.
     This cake is not chocolate.
@@ -38,9 +37,8 @@ const checkCakeFlavour = (choc=false) => {
     const isChocolate = !!choc; // Coerce the passed value to be a boolean
     const flavours = ["vanilla","chocolate"]; // The cake is either vanilla or chocolate
 
-    return isChocolate ? "This cake is chocolate. Therefore, this cake is not vanilla" : "This cake is not chocolate. Therefore, this cake is vanilla"; // Is the cake chocolate? Returns either true of false.
+    return isChocolate ? "This cake is " + flavours[1] + ". Therefore, this cake is not " + flavours[0] : "This cake is not " + flavours[1] +". Therefore, this cake is " + flavours[0]; // Is the cake chocolate? Returns either true of false.
 }
-
 
 console.log( checkCakeFlavour(false) ); // "This cake is not chocolate. Therefore, this cake is vanilla" - "choc" parameter set to false.
 console.log( checkCakeFlavour(true) ); // "This cake is chocolate. Therefore, this cake is not vanilla" - "choc" parameter set to true.
