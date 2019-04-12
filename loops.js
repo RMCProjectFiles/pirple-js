@@ -18,7 +18,7 @@ const isPrime = (num) => { // Function to determine whether a given number is a 
 }
 
 const checkNum = (num) => { // Function to determine the correct response to print
-    switch(true){ 
+    switch(true){
         case isPrime(num): // Check if the number is a prime number
             return "prime"; // If it is, return "prime"
         case (num % 15 === 0): // Check if the number can be evenly divided by 15 (evenly divided by both 3 and 5)
