@@ -152,7 +152,7 @@ function timeAdder(value1=0, label1="", value2=0, label2=""){
             case "d":
                 return [total, total === 1 ? "day" : "days"]; // Return an array containing the total as the first element, followed by the correct grammar as the second element                              
         }
-    }    
+    }
 
     return addTime(val1,val2,lab); // Invoke the above nested function with the calculated values.
 
