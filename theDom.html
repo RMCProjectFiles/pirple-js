@@ -1,0 +1,81 @@
+<!--
+    Name: theDom.html
+    Author: Richard Chappell
+    Course: Keeping Up With The JavaScripts - Part 1: ES6
+    Homework: Lecture 7 - The Dom  
+-->
+<!DOCTYPE html>
+
+ <html>
+    <head>
+        <!-- CSS -->
+        <style>
+            body {
+                background-color: white; /* Set the background to white */
+                font-family: Arial, Helvetica, sans-serif; /* Set the font-family */
+                color: #000; /* Set the font colour to black */
+                text-align: center; /* Centre align all text */
+            }
+
+            h1 {
+                font-size: 28px; /* Set the font-size of the h1 tag */
+            }
+
+            h2 {
+                font-size: 18px; /* Set the font size of the h2 tag */
+            }
+
+            p {
+                margin-bottom: 40px; /* Set the bottom margin of all p tags */
+            }
+
+            /*Wrapper div*/
+            #rectangleWrapper { /* Target element with id of "rectangleWrapper" */
+                padding: 50px 50px 0 50px; /* Padding for top, right, bottom and left */
+            }
+
+            .swatch { /* Target all elements with a class of "swatch" */
+                height: 150px; /* Set the height of each swatch */
+                width: 450px; /* Set the width of each swatch */
+                margin: 15px auto; /* Set the margin for each swatch - 15 pixels top and bottom. Setting "auto" for left and right will center the div */
+            }        
+        </style>
+    </head>
+    <body>
+        <div id="rectangleWrapper"> <!-- Wrapper Div -->
+            <h1>Favourite Colours</h1> <!-- H1 header tag-->
+            <h2>The swatches below show my favourite colours. For today at least. I may change my mind tomorrow...</h2> <!-- H2 Description -->
+        </div>
+        
+        <!-- JavaScript -->
+        <script>
+            const colours = ["#6833FF", "#FFB233", "#0F7A04", "#047A63", "#CC0DA4", "#B8A040", "#B5CC9B", "#6D050E", "#9C3DA9", "#2020EC"]; // Array of hex colour references
+            const containerDiv = document.getElementById("rectangleWrapper"); // Get the container div and assign it to a constant
+            const idName = "colour"; // All IDs will begin with this
+            console.log("Here are the rectangle IDs"); // Print a simple message to the screen
+
+            for(let i = 0; i < colours.length ; i++){ // Loop through the colours
+                const swatchDiv = document.createElement("div"); // For each colour, create a div
+                swatchDiv.setAttribute("class", "swatch"); // Give the div a class of "swatch"
+                swatchDiv.setAttribute("id", idName + i); // Give the div an ID
+                swatchDiv.setAttribute("style", "background-color:" + colours[i]); // Add a style attribute to set the background colour of the div
+
+                containerDiv.appendChild(swatchDiv); // Append the div to the container div
+
+                console.log(swatchDiv.id); // Print the ID of the div to the console
+
+                const paragraph = document.createElement("p"); // Create a new paragraph
+                paragraph.innerText = colours[i]; // Set the inner text of the paragraph to the present colour
+
+                containerDiv.appendChild(paragraph); // Append the paragraph to the container div
+            }
+
+            const title = document.createElement("title"); // Create a new title tag
+            title.innerText = document.getElementsByTagName("h1")[0].innerText; // Set the title text to the same as the h1 text
+
+            const head = document.getElementsByTagName("head")[0]; // Get the head tag and assign it to a constant
+
+            head.appendChild(title); // Append the title to the head of the web page
+        </script>
+    </body>
+</html>
