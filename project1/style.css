@@ -1,0 +1,138 @@
+/*
+    Name: style.css
+    Author: Richard Chappell
+    Course: Keeping Up With The JavaScripts - Part 1: ES6
+    Homework: Project #1 - To Do List
+*/
+
+/* Colours: ffdfd3, fec8d8, d291bc, 957dad*/
+
+body{
+    background: #957dad;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #666;
+}
+
+#wrapper{
+    width: 480px;
+    height: 100%;
+    background: #ffdfd3;
+    padding: 20px;
+    margin: 20px auto;
+    border: 3px dashed #d291bc;
+    border-radius: 5%;
+}
+
+h1{
+    font-size: 42px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    text-align: center;
+    font-size: 24px;
+}
+
+p{
+      text-align: center;
+}
+
+a {
+    color: #d291bc;
+    text-decoration: none;
+}
+
+a:active, a:focus, a:visited {
+    color: #fec8d8;
+}
+
+button{
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: #d291bc;
+    color: #fec8d8;
+    text-align: center;
+    padding: 15px;
+    width: 210px;
+    border: none;
+}
+
+button.indexBtn{
+    font-size: 24px;
+    margin: 0 15px;
+}
+
+button.frmBtn{
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+button.btnSmall{
+    margin: 5px;
+    padding: 15px 5px;
+    max-width: 150px;
+    letter-spacing: 1px;
+}
+
+button.btnInline{
+    margin: 5px 0 5px auto;
+    padding: 8px;
+    max-width: 95px;
+    letter-spacing: 1px;
+}
+
+form{
+    width: 300px;
+    margin: 20px auto 0 auto;
+    text-align: right;
+}
+
+ul {
+    list-style-type: none;
+}
+
+label span {
+    color: #666;
+    font-size: 18px;
+}
+
+input{
+    font-size: 18px;
+    background: #fff;
+    border: 1px solid #d291bc;
+    width: 170px;
+    padding: 5px;
+    color: #666;
+    margin: 15px 0 0 15px;
+}
+
+input.chk {
+    height: 18px;
+    width: 18px;
+    margin: 20px 0 0 10px;
+}
+
+ul li label input.chk{
+    margin-right: 15px;
+}
+
+#errorDiv{
+    border: 2px solid #f00;
+    color: #f00;
+    text-align: center;
+}
+
+#errorDiv p{
+    font-weight: bold;
+}
+
+#errorDiv ul {
+    list-style: none;
+}
+
+span.strk{
+    text-decoration: line-through;
+    color: #999;
+}

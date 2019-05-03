@@ -1,0 +1,41 @@
+/*
+    Name: style.css
+    Author: Richard Chappell
+    Course: Keeping Up With The JavaScripts - Part 1: ES6
+    Homework: Lecture 8 - Events
+*/
+body{
+    background: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1{
+    font-size: 24px;
+    text-align: center;
+}
+
+table{
+    height: 450px;
+    width: 450px;
+    margin: 20px auto;
+}
+
+td{
+    text-align: center;
+    border: 1px solid #ccc;
+    width: 33%;
+    height: 33%;
+}
+
+td {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.circle{
+    color: black;
+}
+
+.cross{
+    color: red;
+}
