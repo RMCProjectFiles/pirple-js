@@ -38,7 +38,7 @@ const showError = (errorArray, id="app") => { // Const function to display error
     if(div){ // If the div exists...
         div.parentNode.removeChild(div); // ...remove it from it's parent
     }    
-    const el = document.getElementById(id); // Target the div with an id of "app" and save it to a const
+    const el = document.getElementById(id); // Target the specified div and save it to a const
     const errorDiv = createEl("div", {id: "errorDiv"}, el); // Create a div to display error messages within
     createEl("p", {}, errorDiv, "Please correct the following errors:"); // Create paragraph with introductory error message
     const ol = createEl("ol", {}, errorDiv); // Create an ordered list to display the error message(s)
@@ -94,12 +94,6 @@ const headerButtons = () => { // Const function to generate and display the butt
     createEl("button", {class: "btnSmall"}, app, "Account Settings", {click: signupScreen}); // Create a button to link to the account settings page
     createEl("button", {class: "btnSmall"}, app, "Dashboard", {click: showDashboard}); // Create a button to link to the dashboard 
     createEl("button", {class: "btnSmall"}, app, "Log Out", {click: logoutUser}); // Create a button to log out the user
-}
-
-const showAccountSettings = () => { // Constant function to display account settings
-    const app = document.getElementById("app"); // Target the div with an id of "app"
-    app.innerHTML = ""; // Clear any HTML from within the div
-    headerButtons(); // Add the header buttons
 }
 
 const checkTitle = (title, arrPos) => { // Constant function to check if a giveb title already exists - ignores the title if it is being edited (so as not to return a false positive)
@@ -180,7 +174,7 @@ const saveList = (e) => {
     frm.reset(); // Clear the form input input
  }
 
-const toggleCompleted = (e) => {
+const toggleCompleted = (e) => { // Constant function to mark a list item as completed
     const itemId = e.target.value; // The item id is stored in the value attribute of the checkbox
     userList[itemId][1] = e.target.checked ? 1 : 0; // If the checkbox is checked, set the value to 1, else set it to 0
     saveUserData(); // Save the user data to local storage
@@ -189,7 +183,7 @@ const toggleCompleted = (e) => {
     span.setAttribute("class", e.target.checked ? "strk" : ""); // Add/remove the class as appropriate
 }
 
-const showList = () => { // Contant function to create a new list
+const showList = () => { // Contant function to create or edit a list
     const app = document.getElementById("app"); // Target the div with an id of "app"
     app.innerHTML = ""; // Clear any HTML from within the div
     headerButtons(); // Add the header buttons
@@ -205,16 +199,13 @@ const showList = () => { // Contant function to create a new list
     const listId = createEl("input", {type: "hidden", value: userListId, name: "listId", id: "listId"}, listTitleLabel); // Create a hidden form input to hold the id of the list
     createEl("button", {class: "btnInline"}, listTitleLabel, "Save Title", {click: saveListTitle}); // Create a button, give it a class, append it to the label, set the inner text and assign it an event handler
 
-    if(userListTitle.length){
+    if(userListTitle.length){ // Allow the user to create list items
         const frm2 = createEl("form", {action: "javascript:;", method: "post", id: "toDoListItemFrm"}, app); // Create a form, set the attributes (action, method, id) and append it to the app div
         const listItemLabel = createEl("label", {}, frm2, "To Do"); // Create a label, append it to the form and set the inner text
         const toDo = createEl("input", {name: "toDo", "data-label": "To Do", id: "toDo"}, listItemLabel); // Create form input and append it to the label
         createEl("button", {class: "btnInline"}, frm2, "Save", {click: saveList}); // Create a button, give it a class, append it to the label, set the inner text and assign it an event handler        
-    }
 
-    const ul = createEl("ul", {id: "list"}, app); // Create an unordered list to display the each to-do list item in the array
-
-    if(userList.length){
+        const ul = createEl("ul", {id: "list"}, app); // Create an unordered list to display the each to-do list item in the array
 
         for(let i = 0; i < userList.length; i++){ // Loop over the array
             let li = createEl("li", {}, ul); // Create a list item and append it to the unordered list        
@@ -225,8 +216,8 @@ const showList = () => { // Contant function to create a new list
                 chkbx.setAttribute("checked","checked"); // Check the checkbox
                 span.classList.add("strk"); // Add a class to the span
             }
-        }
-    }
+        }        
+    }    
 }
 
 const setListId = (e) => { // Constant function to set the list Id
@@ -249,10 +240,10 @@ const showDashboard = () => { // Const function to display the dashboard
         createEl("p", {class: "frmBtn"}, app, "You do not have any to-do lists. Click the button above to create one."); // ...show a message
     } else { // Show available lists
         createEl("h3", {}, app, "Your To-Do Lists");
-        const ol = createEl("ol", {}, app);
+        const ol = createEl("ol", {}, app); // Create an ordered list
         for(let i = 0 ; i < userData.lists.length ; i++){ // Loop through the array of "To-Do" lists
-            let li = createEl("li", {}, ol);
-            let a = createEl("a", {href: "javascript:;", "data-id": i}, li, userData.lists[i].title, {click: setListId});
+            let li = createEl("li", {}, ol); // Create a list item
+            let a = createEl("a", {href: "javascript:;", "data-id": i}, li, userData.lists[i].title, {click: setListId}); // Create an "a" tag to link to the specific To-Do list
         }
     }
 
@@ -301,7 +292,7 @@ const processSignUp = (e) => { // Constant function to process the signup form
     allUserData.push(thisUser); // Add the user data to the array of users
     storage.setItem("userData",JSON.stringify(allUserData)); // Convert the user data to JSON and store locally
 
-    userData = allUserData[allUserData.length -1];
+    userData = allUserData[allUserData.length -1]; // Save the user data to a global variable
 
     showDashboard(); // Invoke function to show the dashboard
 
@@ -334,15 +325,14 @@ const processLogIn = (e) => { // Constant function to process a login
         userIndex = thisUserIndex; // Update the global variable     
         showDashboard(); // Display the dashboard
     }else{ // Password is incorrect
-        userData = null;
+        userData = null; // Reset the userData variable
         const errorArray = ["Username/Password combination is incorrect"]; // Create an array and add an appropriate error message to it
         showError(errorArray); // Pass the array to the showError function to display the error
     }
 
 }
 
-
-const processUserData = (e) => {
+const processUserData = (e) => { // Constant function to process user data (settings)
     e.preventDefault(); // Button exists in a form, so prevent the default form submission
     const frm = document.getElementById("signUpForm"); // Target the form with an id of "logInForm"
     const validFrm = validateForm(frm); // Pass the form to the validateForm function
