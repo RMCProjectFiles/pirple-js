@@ -6,7 +6,7 @@
 */
 
 const storage = window.localStorage; // Access the local storage and save it to a const in the global scope
-//storage.clear();
+
 let allUserData, userIndex, userData, userList, userListId = -1; // Let variables to store user and list information
 
 const createEl = (el, attr={}, parent="", txt="", listener={}) => { // Const function to create HTML elements, set attributes, add inner text, assign parent node and event handlers
