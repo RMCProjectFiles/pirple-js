@@ -5,11 +5,11 @@
     Homework: Project #1 - To Do List
 */
 
-const storage = window.localStorage; // Access the local storage and save it to a const
-// storage.clear();
-let allUserData, userIndex, userData, userList, userListId=-1; // Let variables to store user and list information
+const storage = window.localStorage; // Access the local storage and save it to a const in the global scope
+//storage.clear();
+let allUserData, userIndex, userData, userList, userListId = -1; // Let variables to store user and list information
 
-const createEl = (el, attr={}, parent="", txt="", listener={}) => { // Const function to create HTML elements, set attributes, add inner text, assign parent and event handlers
+const createEl = (el, attr={}, parent="", txt="", listener={}) => { // Const function to create HTML elements, set attributes, add inner text, assign parent node and event handlers
     const newElement = document.createElement(el); // Create the required HTML element
     const attrs = Object.entries(attr); // Break the object down into an array of arrays (each sub array contains two elements: the name/value pairs)
     const listeners = Object.entries(listener); // Break the object down into an array of arrays (each sub array contains two elements: the name/value pairs)
@@ -39,8 +39,8 @@ const showError = (errorArray, id="app") => { // Const function to display error
         div.parentNode.removeChild(div); // ...remove it from it's parent
     }    
     const el = document.getElementById(id); // Target the div with an id of "app" and save it to a const
-    const errorDiv = createEl("div", {id: "errorDiv"}, el); // Create a dive to display error messages within
-    const p = createEl("p", {}, errorDiv, "Please correct the following errors:"); // Create paragraph with introductory error message
+    const errorDiv = createEl("div", {id: "errorDiv"}, el); // Create a div to display error messages within
+    createEl("p", {}, errorDiv, "Please correct the following errors:"); // Create paragraph with introductory error message
     const ol = createEl("ol", {}, errorDiv); // Create an ordered list to display the error message(s)
 
     for(const msg of errorArray){ // Loop over the error array
@@ -91,17 +91,15 @@ const logoutUser = () => { // Constant function to log out a user
 const headerButtons = () => { // Const function to generate and display the buttons displayed at the top of all logged in pages
     const app = document.getElementById("app"); // Target the div with an id of "app"
 
-    const accountBtn = createEl("button", {class: "btnSmall"}, app, "Account Settings", {click: signupScreen}); // Create a button to link to the account settings page
-    const dashboard = createEl("button", {class: "btnSmall"}, app, "Dashboard", {click: showDashboard}); // Create a button to link to the dashboard 
-    const logOutBtn = createEl("button", {class: "btnSmall"}, app, "Log Out", {click: logoutUser}); // Create a button to log out the user
+    createEl("button", {class: "btnSmall"}, app, "Account Settings", {click: signupScreen}); // Create a button to link to the account settings page
+    createEl("button", {class: "btnSmall"}, app, "Dashboard", {click: showDashboard}); // Create a button to link to the dashboard 
+    createEl("button", {class: "btnSmall"}, app, "Log Out", {click: logoutUser}); // Create a button to log out the user
 }
 
 const showAccountSettings = () => { // Constant function to display account settings
     const app = document.getElementById("app"); // Target the div with an id of "app"
     app.innerHTML = ""; // Clear any HTML from within the div
     headerButtons(); // Add the header buttons
-
-
 }
 
 const checkTitle = (title, arrPos) => { // Constant function to check if a giveb title already exists - ignores the title if it is being edited (so as not to return a false positive)
@@ -179,6 +177,7 @@ const saveList = (e) => {
     let label = createEl("label", {}, li); // Create a label and append it to the list item
     let chkbx = createEl("input", {type: "checkbox", value: userList.length -1, class: "chk"}, label, "", {click: toggleCompleted}); // Create a checkbox, set the parameters (type, value) and append it to the label 
     let span = createEl("span", {}, label, toDo); // Create a span, append it to the label and set the inner text    
+    frm.reset(); // Clear the form input input
  }
 
 const toggleCompleted = (e) => {
@@ -213,9 +212,9 @@ const showList = () => { // Contant function to create a new list
         createEl("button", {class: "btnInline"}, frm2, "Save", {click: saveList}); // Create a button, give it a class, append it to the label, set the inner text and assign it an event handler        
     }
 
-    if(userList.length){
+    const ul = createEl("ul", {id: "list"}, app); // Create an unordered list to display the each to-do list item in the array
 
-        const ul = createEl("ul", {id: "list"}, app); // Create an unordered list to display the each to-do list item in the array
+    if(userList.length){
 
         for(let i = 0; i < userList.length; i++){ // Loop over the array
             let li = createEl("li", {}, ul); // Create a list item and append it to the unordered list        
