@@ -8,7 +8,7 @@
 /* 
     Destructuring Arrays
     --------------------
-    When destructuring arrays we do so by referencing each element of the array. Each element does not need to be assigned to a variable as it can be skipped. The declaration and assignment of variables is done within square brackets
+    When destructuring arrays we do so by referencing each element of the array. Each element does not need to be assigned to a variable as those prior to the target element can be skipped. The declaration and assignment of variables is done within square brackets
 */
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Create a simple array of numbers
@@ -51,7 +51,7 @@ console.log(custId, custCredit); // Print the values of the constants to the con
 
 const obj2 = {
     employeeId: 456,
-    employeeName: "Employee One",
+    employeeName: "Joe Blow",
     employeeDepartment: "IT",
     employeeAddress: { // Child (nested) object
         line1: "123 Any Street",
