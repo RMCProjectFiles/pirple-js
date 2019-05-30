@@ -8,7 +8,7 @@
 /* 
     Destructuring Arrays
     --------------------
-    When destructuring arrays we do so by referencing each element of the array. Each element does not need to be assigned to a variable as it can be skipped. The assignment of variables is done within square brackets
+    When destructuring arrays we do so by referencing each element of the array. Each element does not need to be assigned to a variable as it can be skipped. The declaration and assignment of variables is done within square brackets
 */
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]; // Create a simple array of numbers
@@ -35,7 +35,7 @@ console.log(val1, val2); // 200, 100
 /* 
     Destructuring Objects
     --------------------
-    When destructuring objects we do so by referencing the required key of the object. The assignment of variables is done within curly braces
+    When destructuring objects we do so by referencing the required key of the object. The declaration and assignment of variables is done within curly braces
 */
 
 const obj1 = {
