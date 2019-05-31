@@ -16,7 +16,7 @@ const reverseJsonArray = (str) => { // Constant function to reverse an array. Ta
 
 let str; // Declare a let variable to hold the stringified JSON
 
-/* Invoke the function testing various scenarios */
+/* Invoke the function multiple time to test various scenarios */
 
 str = JSON.stringify(['a','b']); // Stringified array containing two string values
 console.log(reverseJsonArray(str)); // Invoke the function and print to the console. 
